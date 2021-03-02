@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>DOM practice!</title>
+    <style>
+      #script1 {
+        text-align: center;
+      }
+
+      #userInput {
+        text-align: center;
+      }
+
+      div button {
+        margin-left: 2em;
+      }
+
+      li button {
+        margin-left: 20px;
+      }
+
+      li {
+        margin-bottom: 10px;
+      }
+
+      ul {
+        margin-left: 43em;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="script1">
+      <script>
+        var header1 = document.createElement("H1");
+        header1.textContent = 'Practice manipulating the DOM';
+        header1.style.textAlign = 'center';
+        document.body.appendChild(header1);
+
+        var para1 = document.createElement('p');
+        para1.textContent = 'The content on this page is added by manipulating the DOM.';
+        para1.style.textAlign = 'center';
+        document.body.appendChild(para1);
+        document.body.children[2].style.color = 'Magenta';
+        document.body.children[2].style.background = 'LawnGreen';
+        document.body.children[2].style.marginLeft = '30em';
+        document.body.children[2].style.marginRight = '30em';
+      </script>
+    </div>
+    <div id="userInput">
+      <label for="item">Enter text to add to a list:</label>
+      <input type="text" name="item" id="item">
+      <button>Add to list</button>
+    </div>
+
+    <ul>
+
+    </ul>
+
+    <div>
+      <script>
+        //Add items to a list
+        const list = document.querySelector('ul');
+        const input = document.querySelector('input');
+        const button = document.querySelector('button');
+
+        button.onclick = function() {
+          let myItem = input.value;
+          input.value = '';
+
+          const listItem = document.createElement('li');
+          const listText = document.createElement('span');
+          const listBtn = document.createElement('button');
+
+          listItem.appendChild(listText);
+          listText.textContent = myItem;
+          listItem.appendChild(listBtn);
+          listBtn.textContent = 'Delete';
+          list.appendChild(listItem);
+
+          listBtn.onclick = function(e) {
+            list.removeChild(listItem);
+          }
+          input.focus();
+        }
+      </script>
+    </div>
+  </body>
+</html>
